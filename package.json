@@ -2,6 +2,10 @@
   "name": "my-recipe",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm": "8.1.2",
+    "node": "16.13.1"
+  },
   "dependencies": {
     "@chakra-ui/icons": "^1.1.5",
     "@chakra-ui/react": "^1.8.1",
