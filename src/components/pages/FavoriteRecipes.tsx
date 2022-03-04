@@ -1,4 +1,4 @@
-import { useDisclosure, Wrap, WrapItem } from '@chakra-ui/react'
+import { Box, useDisclosure, Wrap, WrapItem } from '@chakra-ui/react'
 import { memo, useCallback, useEffect, VFC } from 'react'
 import { useFavoriteRecipe } from '../../hooks/useFavoriteRecipe'
 import { useSelectRecipe } from '../../hooks/useSelectRecipe'
@@ -25,6 +25,7 @@ export const FavoriteRecipes: VFC = memo(() => {
     }, [])
     return (
         <>
+            <Box pt={{ base: '80px', md: '90px' }}></Box>
             {favRecipes.length === 0 ? (
                 <NotFoundMessage title="No favorite recipes.">
                     Recipes added to your favorites will be displayed here.

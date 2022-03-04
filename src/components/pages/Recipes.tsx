@@ -91,7 +91,13 @@ export const Recipes: VFC = memo(() => {
         <>
             {/* searcharea aaaaaaaaaaaaa*/}
 
-            <HStack p={3} w={{ sm: '350px', md: '650px' }} spacing="8px" display={'flex'} mx={'auto'}>
+            <HStack
+                pt={{ base: '80px', md: '90px' }}
+                w={{ sm: '350px', md: '650px' }}
+                spacing="8px"
+                display={'flex'}
+                mx={'auto'}
+            >
                 <InputGroup display={'flex'} mx={'auto'} size={'lg'} w={{ sm: '240px', md: '480px' }}>
                     <Input placeholder="Find recipes" onChange={onChangeQue} value={q} variant={'filled'} />
                     <InputRightElement>
