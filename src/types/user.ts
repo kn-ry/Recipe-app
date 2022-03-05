@@ -1,3 +1,5 @@
+// this type is not in use now
+
 export type User = {
     id: number
     name: string

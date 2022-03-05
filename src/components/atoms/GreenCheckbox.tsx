@@ -1,3 +1,5 @@
+// this component is not in use now
+
 import { Checkbox } from '@chakra-ui/react'
 import { memo, ReactNode, VFC } from 'react'
 

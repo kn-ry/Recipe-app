@@ -30,9 +30,6 @@ export const RecipeCard: VFC<Props> = memo((props) => {
                             {title}
                         </Text>
                     </Flex>
-                    {/* <Text fontSize={'sm'} color={'gray'}>
-                        {detail}
-                    </Text> */}
                 </VStack>
             </Box>
         </>

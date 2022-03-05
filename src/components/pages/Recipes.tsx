@@ -26,8 +26,6 @@ export const Recipes: VFC = memo(() => {
     const modalSearch = useDisclosure()
     const modalDetail = useDisclosure()
 
-    // searchareaiiiii
-
     const [q, setQ] = useState('')
     const [diet, setDiet] = useState('')
     const [health, setHealth] = useState('')
@@ -36,6 +34,16 @@ export const Recipes: VFC = memo(() => {
     const [dishType, setDishType] = useState('')
     const [calSlider, setCalSlider] = useState<number>(5000)
     const [timeSlider, setTimeSlider] = useState<number>(360)
+
+    const onChangeQue = (e: ChangeEvent<HTMLInputElement>) => setQ(e.target.value)
+
+    const onCLickCard = useCallback(
+        (id: string) => {
+            onSelectRecipe({ id, recipes })
+            modalDetail.onOpen()
+        },
+        [onSelectRecipe, recipes, modalDetail]
+    )
 
     const onClickSearch = () => {
         const searchData = {
@@ -62,18 +70,6 @@ export const Recipes: VFC = memo(() => {
         modalSearch.onClose()
     }
 
-    // searchareaiiiii
-
-    const onCLickCard = useCallback(
-        (id: string) => {
-            onSelectRecipe({ id, recipes })
-            modalDetail.onOpen()
-        },
-        [onSelectRecipe, recipes, modalDetail]
-    )
-
-    const onChangeQue = (e: ChangeEvent<HTMLInputElement>) => setQ(e.target.value)
-
     useEffect(() => {
         // display default recipes searched by ramdom query.
         const exArr = ['lunch', 'dinner', 'chicken', 'fish', 'beef', 'italian', 'french', 'pork', 'sandwich', 'potato']
@@ -83,8 +79,6 @@ export const Recipes: VFC = memo(() => {
 
     return (
         <>
-            {/* searcharea aaaaaaaaaaaaa*/}
-
             <HStack
                 pt={{ base: '80px', md: '90px' }}
                 w={{ sm: '350px', md: '650px' }}
@@ -127,7 +121,6 @@ export const Recipes: VFC = memo(() => {
                 onClickSearch={onClickSearch}
             />
 
-            {/* searcharea aaaaaaaaaaaaa*/}
             {isLoading ? (
                 <Center height={'100vh'}>
                     <GreenSpinner />

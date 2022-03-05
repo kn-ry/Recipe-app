@@ -1,3 +1,5 @@
+// this component is not in use now
+
 import { Box, Divider, Flex, Heading, HStack, Input, Text, VStack } from '@chakra-ui/react'
 import { ChangeEvent, memo, useState, VFC } from 'react'
 import { useAuth } from '../../hooks/useAuth'

@@ -1,15 +1,15 @@
-import { Box, Button, Flex, Heading, HStack, Link, LinkBox, Text, useDisclosure } from '@chakra-ui/react'
+import { Flex, Heading, HStack, Link, useDisclosure } from '@chakra-ui/react'
 import { memo, useCallback, VFC } from 'react'
 import { useHistory } from 'react-router-dom'
 import { HamburgerIconButton } from '../../atoms/HamburgerIconButton'
+import { LoginStatus } from '../../molecules/LoginStatus'
 import { MenuDrawer } from '../../molecules/MenuDrawer'
 
 export const Header: VFC = memo(() => {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const history = useHistory()
-    const onClickHome = useCallback(() => history.push('/recipes'), [history])
-    const onClickRecipes = useCallback(() => history.push('/recipes'), [history])
+    const onClickRecipes = useCallback(() => history.push('/'), [history])
     const onClickFavRecipes = useCallback(() => history.push('/favoriterecipes'), [history])
     return (
         <>
@@ -52,7 +52,7 @@ export const Header: VFC = memo(() => {
                     </HStack>
                 </Flex>
                 <Flex
-                    onClick={onClickHome}
+                    onClick={onClickRecipes}
                     _hover={{ cursor: 'pointer', opacity: 0.6 }}
                     position={'absolute'}
                     top={{ base: 4, md: 5 }}
@@ -62,6 +62,9 @@ export const Header: VFC = memo(() => {
                     <Heading as={'h1'} fontSize="2xl">
                         Recipe App
                     </Heading>
+                </Flex>
+                <Flex position={'absolute'} right={{ base: '1%', md: '3%' }}>
+                    <LoginStatus />
                 </Flex>
             </Flex>
             <MenuDrawer

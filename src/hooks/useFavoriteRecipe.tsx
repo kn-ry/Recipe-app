@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback } from 'react'
 import { useRecoilState } from 'recoil'
 import { favRecipesState } from '../store/favRecipesState'
 import { Recipe } from '../types/recipe'

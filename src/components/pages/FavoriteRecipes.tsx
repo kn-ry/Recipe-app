@@ -28,7 +28,7 @@ export const FavoriteRecipes: VFC = memo(() => {
             <Box pt={{ base: '80px', md: '90px' }}></Box>
             {favRecipes.length === 0 ? (
                 <NotFoundMessage title="No favorite recipes.">
-                    Recipes added to your favorites will be displayed here.
+                    Recipes added to your favorites will be shown here.
                 </NotFoundMessage>
             ) : (
                 <Wrap
