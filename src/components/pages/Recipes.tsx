@@ -1,18 +1,12 @@
 import { Search2Icon } from '@chakra-ui/icons'
 import {
-    Box,
-    Button,
     Center,
     HStack,
     IconButton,
     Input,
     InputGroup,
     InputRightElement,
-    Spinner,
-    Stack,
-    Text,
     useDisclosure,
-    VStack,
     Wrap,
     WrapItem
 } from '@chakra-ui/react'
@@ -109,7 +103,7 @@ export const Recipes: VFC = memo(() => {
                         />
                     </InputRightElement>
                 </InputGroup>
-                <FollowButton onClick={modalSearch.onOpen}>Detailed Search</FollowButton>
+                <FollowButton onClick={modalSearch.onOpen}>Advanced Search</FollowButton>
             </HStack>
             <RecipeSearchModal
                 isOpen={modalSearch.isOpen}
@@ -168,14 +162,14 @@ export const Recipes: VFC = memo(() => {
                         </WrapItem>
                     ))}
                     {/* 次ページへの遷移　未実装 */}
-                    <WrapItem w={'full'}>
+                    {/* <WrapItem w={'full'}>
                         <Box mx={'auto'}>
                             <HStack spacing={5}>
                                 <Button w={'50px'}>◀︎</Button>
                                 <Button w={'50px'}>▶︎</Button>
                             </HStack>
                         </Box>
-                    </WrapItem>
+                    </WrapItem> */}
                 </Wrap>
             )}
             <RecipeDetailModal recipe={selectedRecipe} isOpen={modalDetail.isOpen} onClose={modalDetail.onClose} />

@@ -28,8 +28,6 @@ import { RiTimerLine } from 'react-icons/ri'
 
 import { Recipe } from '../../../types/recipe'
 import { useFavoriteRecipe } from '../../../hooks/useFavoriteRecipe'
-import { FavoriteRecipes } from '../../pages/FavoriteRecipes'
-import { NotFoundMessage } from '../../atoms/NotFoundMessage'
 
 type Props = {
     recipe: Recipe | null

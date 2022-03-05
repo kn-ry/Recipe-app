@@ -21,7 +21,7 @@ export const RecipeCard: VFC<Props> = memo((props) => {
                 pt={0}
                 boxShadow="6px 6px 2px 1px #a9a9a9"
                 onClick={() => onClick(id)}
-                _hover={{ boxShadow: '9px 9px 5px 1px #C7CF30', transform: 'translate(-5px, -5px)' }}
+                _hover={{ boxShadow: '9px 9px 5px 1px #C7CF30', transform: 'translate(-5px, -5px)', cursor: 'pointer' }}
             >
                 <VStack h={'full'}>
                     <Image src={imageUrl} boxSize={'240px'} alt="   image invalid" />
