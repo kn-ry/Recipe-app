@@ -95,7 +95,7 @@ export const RecipeSearchModal: VFC<Props> = memo((props: Props) => {
                         <ModalBody>
                             <VStack spacing={6} align={'left'}>
                                 <HStack>
-                                    <FormControl isRequired>
+                                    <FormControl>
                                         <FormLabel>keyword</FormLabel>
                                         <Input placeholder="example: chicken" value={q} onChange={onChangeQ} />
                                         <FormHelperText>menu, ingredient, etc...</FormHelperText>
@@ -121,10 +121,20 @@ export const RecipeSearchModal: VFC<Props> = memo((props: Props) => {
                                         <Select value={health} onChange={onChangeHealth}>
                                             <option>all</option>
                                             <option value="alcohol-cocktail">alcohol-cocktail</option>
+                                            <option value="alcohol-free">alcohol-free</option>
                                             <option value="crustacean-free">crustacean-free</option>
                                             <option value="dairy-free">dairy-free</option>
                                             <option value="egg-free">egg-free</option>
                                             <option value="fish-free">fish-free</option>
+                                            <option value="fodmap-free">fodmap-free</option>
+                                            <option value="kosher">kosher</option>
+                                            <option value="low-fat-abs">low-fat-abs</option>
+                                            <option value="low-sugar">low-sugar</option>
+                                            <option value="no-oil-added">no-oil-added</option>
+                                            <option value="peanut-free">peanut-free</option>
+                                            <option value="wheat-free">wheat-free</option>
+                                            <option value="pork-free">pork-free</option>
+                                            <option value="red-meat-free">red-meat-free</option>
                                             <option value="gluten-free">gluten-free</option>
                                             <option value="soy-free">soy-free</option>
                                             <option value="vegan">vegan</option>
@@ -143,11 +153,18 @@ export const RecipeSearchModal: VFC<Props> = memo((props: Props) => {
                                             <option value="Caribbean">Caribbean</option>
                                             <option value="Central%20Europe">Central Europe</option>
                                             <option value="Chinese">Chinese</option>
+                                            <option value="Easten%20Europe">Easten Europe</option>
                                             <option value="French">French</option>
                                             <option value="Indian">Indian</option>
                                             <option value="Italian">Italian</option>
                                             <option value="Japanese">Japanese</option>
+                                            <option value="Kosher">Kosher</option>
+                                            <option value="Mediterranean">Mediterranean</option>
+                                            <option value="Middle%20Easten">Middle Easten</option>
                                             <option value="Mexican">Mexican</option>
+                                            <option value="Nordic">Nordic</option>
+                                            <option value="South%20American">South American</option>
+                                            <option value="South%20East%20Asian">South East Asian</option>
                                         </Select>
                                         <FormHelperText>The type of cuisine of the recipe</FormHelperText>
                                     </FormControl>
@@ -170,7 +187,12 @@ export const RecipeSearchModal: VFC<Props> = memo((props: Props) => {
                                         <FormLabel>dish type</FormLabel>
                                         <Select value={dishType} onChange={onChangeDishType}>
                                             <option>all</option>
-                                            <option value="Side%20dish">Side-dish</option>
+                                            <option value="Bread">Bread</option>
+                                            <option value="Desserts">Desserts</option>
+                                            <option value="Drinks">Drinks</option>
+                                            <option value="Main%20course">Main course</option>
+                                            <option value="Side%20dish">Side dish</option>
+                                            <option value="Salad">Salad</option>
                                             <option value="Soup">Soup</option>
                                             <option value="Starter">Starter</option>
                                             <option value="Sweets">Sweets</option>
