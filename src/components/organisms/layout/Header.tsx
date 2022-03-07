@@ -11,6 +11,7 @@ export const Header: VFC = memo(() => {
     const history = useHistory()
     const onClickRecipes = useCallback(() => history.push('/'), [history])
     const onClickFavRecipes = useCallback(() => history.push('/favoriterecipes'), [history])
+    const onClickAppInfo = useCallback(() => history.push('/appinfo'), [history])
     return (
         <>
             <Flex
@@ -47,8 +48,9 @@ export const Header: VFC = memo(() => {
                 <HamburgerIconButton onOpen={onOpen} />
                 <Flex display={{ base: 'none', md: 'flex' }} align={'center'}>
                     <HStack spacing={5}>
-                        <Link onClick={onClickRecipes}>search recipes</Link>
-                        <Link onClick={onClickFavRecipes}>favorite recipes</Link>
+                        <Link onClick={onClickRecipes}>Search Recipes</Link>
+                        <Link onClick={onClickFavRecipes}>My Favorites</Link>
+                        <Link onClick={onClickAppInfo}>About this app</Link>
                     </HStack>
                 </Flex>
                 <Flex
@@ -72,6 +74,7 @@ export const Header: VFC = memo(() => {
                 isOpen={isOpen}
                 onClickRecipes={onClickRecipes}
                 onClickFavRecipes={onClickFavRecipes}
+                onClickAppInfo={onClickAppInfo}
             />
         </>
     )

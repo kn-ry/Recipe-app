@@ -19,12 +19,13 @@ type Props = {
     isOpen: boolean
     onClickRecipes: () => void
     onClickFavRecipes: () => void
+    onClickAppInfo: () => void
 }
 
 export const MenuDrawer: VFC<Props> = memo((props: Props) => {
     const { user, isAuthenticated } = useAuth0()
 
-    const { onClose, isOpen, onClickRecipes, onClickFavRecipes } = props
+    const { onClose, isOpen, onClickRecipes, onClickFavRecipes, onClickAppInfo } = props
     return (
         <Drawer placement="left" size={'xs'} onClose={onClose} isOpen={isOpen}>
             <DrawerOverlay>
@@ -41,7 +42,10 @@ export const MenuDrawer: VFC<Props> = memo((props: Props) => {
                                 Search Recipes
                             </Button>
                             <Button onClick={onClickFavRecipes} variant="unstyled" w={'100%'} fontSize={'xl'}>
-                                Favorite recipes
+                                My Favorites
+                            </Button>
+                            <Button onClick={onClickAppInfo} variant="unstyled" w={'100%'} fontSize={'xl'}>
+                                About this app
                             </Button>
                             <Divider h={10} borderBottomWidth={2} borderBottomColor={'gray.300'} w={'90%'} />
                             {isAuthenticated ? (
