@@ -16,7 +16,7 @@ export const useFavoriteRecipe = () => {
                 showMessage({ title: 'already registered', status: 'info' })
             }
         },
-        [favRecipes, showMessage]
+        [favRecipes, showMessage, setFavRecipes]
     )
     console.log(favRecipes)
 

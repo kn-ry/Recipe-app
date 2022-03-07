@@ -12,7 +12,7 @@ export const useAllRecipes = () => {
 
     const getRecipes = useCallback(
         (q: string, searchData: object) => {
-            console.log(`this is ${q}`)
+            console.log(`Search result for ${q}`)
 
             new Promise((resolve: (value?: string) => void) => {
                 const receivedData: any = { ...searchData }
@@ -36,7 +36,7 @@ export const useAllRecipes = () => {
                     return apiUrl
                 })
                 .then((apiUrl) => {
-                    console.log(`axios started ${apiUrl}`)
+                    // console.log(`axios started ${apiUrl}`)
 
                     setIsLoading(true)
 

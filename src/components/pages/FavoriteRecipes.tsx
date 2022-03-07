@@ -1,5 +1,5 @@
 import { Box, useDisclosure, Wrap, WrapItem } from '@chakra-ui/react'
-import { memo, useCallback, useEffect, VFC } from 'react'
+import { memo, useCallback, VFC } from 'react'
 import { useFavoriteRecipe } from '../../hooks/useFavoriteRecipe'
 import { useSelectRecipe } from '../../hooks/useSelectRecipe'
 import { NotFoundMessage } from '../atoms/NotFoundMessage'
@@ -16,13 +16,9 @@ export const FavoriteRecipes: VFC = memo(() => {
             onSelectRecipe({ id, recipes: favRecipes })
             onOpen()
         },
-        [onSelectRecipe]
+        [onSelectRecipe, favRecipes, onOpen]
     )
 
-    useEffect(() => {
-        console.log(`favorite recipes:`)
-        console.log(`${favRecipes}`)
-    }, [])
     return (
         <>
             <Box pt={{ base: '80px', md: '90px' }}></Box>

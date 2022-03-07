@@ -6,7 +6,7 @@ import { LogoutButton } from '../atoms/LogoutButton'
 
 export const LoginStatus: VFC = memo(() => {
     const { user, isAuthenticated } = useAuth0()
-    console.log(user)
+    // console.log(user)
 
     return (
         <>
