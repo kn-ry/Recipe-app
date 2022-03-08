@@ -9,6 +9,32 @@ export const useAllRecipes = () => {
     const { showMessage } = useMessage()
     const [recipes, setRecipes] = useState<Array<Recipe>>([])
     const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [nextUrl, setNextUrl] = useState('')
+
+    const runAxios = useCallback(
+        (url: string) => {
+            setIsLoading(true)
+
+            axios
+                .get(url)
+                .then((res) => {
+                    console.log(res)
+
+                    setRecipes(res.data.hits)
+                    setNextUrl(res.data._links.next.href)
+                })
+                .catch(() =>
+                    showMessage({
+                        title: 'Failed to get recipes. Please try again.',
+                        status: 'error'
+                    })
+                )
+                .finally(() => {
+                    setIsLoading(false)
+                })
+        },
+        [showMessage]
+    )
 
     const getRecipes = useCallback(
         (q: string, searchData: object) => {
@@ -38,27 +64,13 @@ export const useAllRecipes = () => {
                 .then((apiUrl) => {
                     // console.log(`axios started ${apiUrl}`)
 
-                    setIsLoading(true)
-
-                    axios
-                        .get(apiUrl)
-                        .then((res) => {
-                            console.log(res)
-
-                            setRecipes(res.data.hits)
-                        })
-                        .catch(() =>
-                            showMessage({
-                                title: 'Failed to get recipes. Please try again.',
-                                status: 'error'
-                            })
-                        )
-                        .finally(() => {
-                            setIsLoading(false)
-                        })
+                    runAxios(apiUrl)
                 })
         },
-        [showMessage]
+        [runAxios]
     )
-    return { getRecipes, recipes, isLoading }
+
+    const goNextPage = useCallback(() => runAxios(nextUrl), [runAxios, nextUrl])
+
+    return { getRecipes, recipes, isLoading, goNextPage }
 }

@@ -1,27 +1,17 @@
-import { Search2Icon } from '@chakra-ui/icons'
-import {
-    Center,
-    HStack,
-    IconButton,
-    Input,
-    InputGroup,
-    InputRightElement,
-    useDisclosure,
-    Wrap,
-    WrapItem
-} from '@chakra-ui/react'
+import { Box, Button, Center, HStack, useDisclosure, Wrap, WrapItem } from '@chakra-ui/react'
 import { ChangeEvent, memo, useCallback, useEffect, useState, VFC } from 'react'
 import { useAllRecipes } from '../../hooks/useAllRecipes'
 import { useSelectRecipe } from '../../hooks/useSelectRecipe'
 import { FollowButton } from '../atoms/FollowButton'
 import { GreenSpinner } from '../atoms/GreenSpinner'
 import { NotFoundMessage } from '../atoms/NotFoundMessage'
+import { QuerySearchInput } from '../atoms/QuerySearchInput'
 import { RecipeCard } from '../organisms/recipe/RecipeCard'
 import { RecipeDetailModal } from '../organisms/recipe/RecipeDetailModal'
 import { RecipeSearchModal } from '../organisms/recipe/RecipeSearchModal'
 
 export const Recipes: VFC = memo(() => {
-    const { getRecipes, recipes, isLoading } = useAllRecipes()
+    const { getRecipes, recipes, isLoading, goNextPage } = useAllRecipes()
     const { onSelectRecipe, selectedRecipe } = useSelectRecipe()
     const modalSearch = useDisclosure()
     const modalDetail = useDisclosure()
@@ -35,7 +25,7 @@ export const Recipes: VFC = memo(() => {
     const [calSlider, setCalSlider] = useState<number>(5000)
     const [timeSlider, setTimeSlider] = useState<number>(360)
 
-    const onChangeQue = (e: ChangeEvent<HTMLInputElement>) => setQ(e.target.value)
+    const onChangeQue = useCallback((e: ChangeEvent<HTMLInputElement>) => setQ(e.target.value), [setQ])
 
     const onCLickCard = useCallback(
         (id: string) => {
@@ -70,11 +60,19 @@ export const Recipes: VFC = memo(() => {
         modalSearch.onClose()
     }
 
+    const returnTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+    }
+
     useEffect(() => {
         // display default recipes searched by ramdom query.
         const exArr = ['lunch', 'dinner', 'chicken', 'fish', 'beef', 'italian', 'french', 'pork', 'sandwich', 'potato']
         const random = exArr[Math.floor(Math.random() * exArr.length)]
         getRecipes(random, {})
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
@@ -86,17 +84,7 @@ export const Recipes: VFC = memo(() => {
                 display={'flex'}
                 mx={'auto'}
             >
-                <InputGroup display={'flex'} mx={'auto'} size={'lg'} w={{ sm: '240px', md: '480px' }}>
-                    <Input placeholder="Find recipes" onChange={onChangeQue} value={q} variant={'filled'} />
-                    <InputRightElement>
-                        <IconButton
-                            aria-label="open search modal"
-                            size={'md'}
-                            icon={<Search2Icon />}
-                            onClick={onClickSearch}
-                        />
-                    </InputRightElement>
-                </InputGroup>
+                <QuerySearchInput onClick={onClickSearch} onChange={(e) => onChangeQue(e)} q={q} />
                 <FollowButton onClick={modalSearch.onOpen}>Advanced Search</FollowButton>
             </HStack>
             <RecipeSearchModal
@@ -143,8 +131,8 @@ export const Recipes: VFC = memo(() => {
                     p={4}
                     spacing={5}
                 >
-                    {recipes.map((recipe) => (
-                        <WrapItem key={recipe.recipe.label}>
+                    {recipes.map((recipe, index) => (
+                        <WrapItem key={index}>
                             <RecipeCard
                                 id={recipe.recipe.label}
                                 imageUrl={recipe.recipe.images.SMALL.url}
@@ -155,14 +143,14 @@ export const Recipes: VFC = memo(() => {
                         </WrapItem>
                     ))}
                     {/* 次ページへの遷移　未実装 */}
-                    {/* <WrapItem w={'full'}>
+                    <WrapItem w={'full'}>
                         <Box mx={'auto'}>
-                            <HStack spacing={5}>
-                                <Button w={'50px'}>◀︎</Button>
-                                <Button w={'50px'}>▶︎</Button>
+                            <HStack spacing={5} onClick={returnTop}>
+                                {/* <Button w={'50px'}>◀︎</Button> */}
+                                <Button onClick={goNextPage}>▶Next Page</Button>
                             </HStack>
                         </Box>
-                    </WrapItem> */}
+                    </WrapItem>
                 </Wrap>
             )}
             <RecipeDetailModal recipe={selectedRecipe} isOpen={modalDetail.isOpen} onClose={modalDetail.onClose} />

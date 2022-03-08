@@ -5,7 +5,7 @@ import { ExternalLinkIcon } from '@chakra-ui/icons'
 export const AppInfo: VFC = memo(() => {
     return (
         <>
-            <Center h={'85vh'} p={5}>
+            <Center p={5} pt={'120px'}>
                 <VStack>
                     <Heading as={'h1'} fontSize={'4xl'}>
                         About this app
@@ -41,6 +41,16 @@ export const AppInfo: VFC = memo(() => {
                             <Link color={'teal.500'} href={'https://github.com/Ryuno-Kono/eda-recipe-app'} isExternal>
                                 Github <ExternalLinkIcon mx={'2px'} />
                             </Link>
+                        </Stack>
+                        <Divider borderBottomWidth={'15px'} borderBottomColor="transparent" />
+                        <Stack>
+                            <Heading as={'h2'} fontSize={'2xl'}>
+                                Attention
+                            </Heading>
+                            <Text fontSize="lg">
+                                The number of available uses of Recipe Search API is limited: 10 times per minute
+                            </Text>
+                            <Text fontSize="lg">If the limit is reached, pleace wait for a second.</Text>
                         </Stack>
                     </Stack>
                 </VStack>
