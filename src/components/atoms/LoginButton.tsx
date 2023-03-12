@@ -8,7 +8,7 @@ export const LoginButton: VFC = memo(() => {
     return (
         <>
             <Button size={'sm'} variant={'unstyled'} onClick={() => loginWithRedirect()} _hover={{ opacity: 0.6 }}>
-                LOGIN
+                Login
                 <IconButton bg={'transparent'} h={3} aria-label="login button" icon={<IoLogInSharp size={'25px'} />} />
             </Button>
         </>

@@ -22,29 +22,10 @@ export const Header: VFC = memo(() => {
                 bg="#C7CF30"
                 color="#6D711A"
                 align="center"
-                // justify="space-between"
                 padding={5}
                 textAlign={'center'}
-                // display="flex"
                 p={{ base: 3, md: 6 }}
             >
-                {/* <Flex align="center" flex="auto" fontSize="md" bg={'red'} display="table-cell">
-                    <Box paddingRight={4} paddingLeft={4}>
-                        <Link onClick={() => onClickRecipes()}>search recipes</Link>
-                    </Box>
-                    <Link onClick={() => onClickFavRecipes()}>favorite recipes</Link>
-                </Flex>
-                <Flex
-                    bg={'green'}
-                    flex={'auto'}
-                    _hover={{ cursor: 'pointer', opacity: 0.8 }}
-                    onClick={() => onClickHome()}
-                    display="table-cell"
-                >
-                    <Heading as="h1" fontSize="xl">
-                        Recipe app
-                    </Heading>
-                </Flex> */}
                 <HamburgerIconButton onOpen={onOpen} />
                 <Flex display={{ base: 'none', md: 'flex' }} align={'center'}>
                     <HStack spacing={5}>
